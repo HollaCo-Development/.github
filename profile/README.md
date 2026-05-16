@@ -16,7 +16,7 @@
 
 ## The product
 
-Imagine a creator's avatar standing in your living room. Their content plays on an image plane in front of them. You can pause at any moment and have a real conversation with them — through an AI that knows their work, their voice, and the context of what you're watching. It feels like the person is actually there.
+Imagine a creator's digital twin standing in your living room. Their content plays on an image plane in front of them. You can pause at any moment and have a real conversation with them — through an AI that knows their work, their voice, and the context of what you're watching. It feels like the person is actually there.
 
 That's HollaCo: a platform that turns recorded creator content into interactive, presence-rich experiences delivered to **AR mobile**, **VR headsets**, and **desktop** — without losing the immediacy of a live conversation.
 
