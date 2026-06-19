@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="https://itipjzcggtzxrjxookes.supabase.co/storage/v1/object/public/site-logos/Holla_brand_2,7x3in_300dpi.png" alt="HollaCo" width="200" />
+  <img src="HollaCo_logo_1024.png" alt="HollaCo" width="180" />
 
   # HollaCo Development Group
 
@@ -24,27 +24,31 @@ That's HollaCo: a platform that turns recorded creator content into interactive,
 
 | Surface | Role |
 |---|---|
-| **Collections** | Discovery + subscription storefront. Find creators, subscribe to their catalogs, launch the experience. |
-| **Babylon App** | AR/VR/Desktop client where the actual conversation happens. WebGL + WebXR; iOS, Android, Windows, headsets. |
-| **Account** | Self-service billing, subscriptions, profile management. |
-| **Auth** | Identity gateway — SSO, magic link, OTP, push, TOTP. |
-| **Authenticator** | Native mobile companion for push-based multi-factor. |
+| **Collections** | Discovery + subscription storefront. Find creators, subscribe to their catalogs, launch the experience. Next.js on `collections.hollaco.com`. |
+| **Babylon XR** | The immersive client where the conversation happens — Babylon.js 7 + WebXR, with n8n-driven realtime media sync and an MCP scene bridge. iOS, Android, Windows, headsets, at `xr.collections.hollaco.com`. |
+| **XR Shell** | Capacitor native launcher that makes OS-level push reliable on iOS/Android, then hands off into the WebXR scene in a real browser. |
+| **Account** | Self-service billing, subscriptions, and profile management — Azure Static Web Apps fronting a Stripe Edge Function suite. `account.hollaco.com`. |
+| **Auth** | Identity gateway — SSO (Google/Apple/Microsoft), magic link, OTP, push-to-approve. Webflow + Supabase, no paid middleware. `auth.hollaco.com`. |
+| **Authenticator** | React Native + Expo companion for TOTP and push-based multi-factor, with biometric approval and SecureStore-backed secrets. |
+| **Developer Hub** | Engineering coordination — Azure DevOps errata board with auto-filed work items from advisories and security findings. |
 
 ## Built on
 
-**Frontend** — Next.js (App Router), React, Tailwind, BabylonJS for the immersive layer
+**Frontend** — Next.js (App Router), React, Tailwind, BabylonJS for the immersive layer; Webflow + Azure Static Web Apps for the auth/account surfaces
 **Cloud** — Microsoft Azure (Static Web Apps, Front Door + WAF, Container Apps, Blob, Data Lake, Entra ID)
 **Data** — Supabase (PostgreSQL + Realtime + Edge Functions + pgvector), Stripe for commerce
 **AI** — Anthropic Claude, ElevenLabs voice, OpenAI embeddings, Firecrawl ingestion
-**Mobile** — React Native, Expo, EAS Build, Sentry
+**Mobile** — React Native, Expo, EAS Build, Capacitor, Sentry
 **Automation** — n8n orchestration, GitHub Actions, Azure DevOps
 
 ## How we work
 
 - Multi-environment delivery — `develop` → `staging` → `main` on every surface, gated by automated checks
 - Row-level security enforced at the database layer, with least-privilege grants — not application-side checks
+- Pinned, SRI-verified CDN dependencies; open-redirect and email-enumeration protections baked into the auth layer
+- Scheduled security scanning on every repo — bi-weekly passive (OWASP ZAP, Playwright, security headers, SRI) and monthly deep scans (ZAP active, TruffleHog secret history, dependency audit)
 - Edge protection via Azure Front Door WAF in prevention mode; centralised observability through Microsoft Sentinel
-- Continuous dependency-vulnerability tracking — high/critical CVEs auto-file tracked work items
+- Continuous dependency-vulnerability tracking — high/critical CVEs auto-file tracked Azure DevOps work items
 - AI-assisted engineering across the stack: design, code review, error remediation, content ingestion
 
 ## Get in touch
